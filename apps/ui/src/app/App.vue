@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import NxWelcome from './NxWelcome.vue';
+
 </script>
 
 <template>
-  <NxWelcome title="ui" />
+  <div>
+    <the-header title="Users List" />
+  </div>
 </template>
