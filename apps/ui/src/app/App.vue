@@ -5,5 +5,6 @@
 <template>
   <div>
     <the-header title="Users List" />
+    <router-view />
   </div>
 </template>
