@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import axios from 'axios';
-import { IUser } from '../types/User';
+import { IUser } from '@node-vue-prom/shared-types';
 
 const apiEndpoint = 'https://jsonplaceholder.typicode.com/users';
 
