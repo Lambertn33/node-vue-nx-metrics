@@ -18,18 +18,22 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/users',
     component: UsersView,
-  },
-  {
-    path: '/users/:id',
-    component: UserView,
+    children: [
+      {
+        path: '/:id',
+        component: UserView,
+      },
+    ],
   },
   {
     path: '/posts',
     component: PostsView,
-  },
-  {
-    path: '/posts/:id',
-    component: PostView,
+    children: [
+      {
+        path: '/:id',
+        component: PostView,
+      },
+    ],
   },
   {
     path: '/:patchMatch(.*)*',

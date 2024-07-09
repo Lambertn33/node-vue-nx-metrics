@@ -4,7 +4,7 @@
 
 <template>
   <div>
-    <the-header title="Users List" />
+    <the-header title="App title" />
     <router-view />
   </div>
 </template>
