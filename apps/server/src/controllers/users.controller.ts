@@ -1,25 +1,27 @@
 import { Request, Response } from 'express';
 import axios from 'axios';
-import { IUser } from '@node-vue-prom/shared-types';
+import { _GET_ALL, _GET_ONE } from '../services';
 
 const apiEndpoint = 'https://jsonplaceholder.typicode.com/users';
 
-export const GET_ALL = async (_: Request, res: Response) => {
-  try {
-    const response = await axios.get(apiEndpoint);
-    const users = (await response.data) as IUser[];
-    return res.status(200).json(users);
-  } catch (error) {
-    return res.status(500).json({ message: 'Error fetching the users' });
-  }
-};
+export const GET_ALL = async (_: Request, res: Response) =>
+  _GET_ALL(apiEndpoint, 'Error fetching users', _, res);
 
-export const GET_ONE = async (req: Request, res: Response) => {
+export const GET_ONE = async (req: Request, res: Response) =>
+  _GET_ONE(
+    apiEndpoint,
+    req,
+    res,
+    'user not found',
+    'error fetching single user'
+  );
+
+export const GET_USER_POSTS = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
-    const response = await axios.get(`${apiEndpoint}/${id}`);
-    const user = response.data as IUser;
-    return res.status(200).json(user);
+    const response = await axios.get(`${apiEndpoint}/${id}/posts`);
+    const posts = await response.data;
+    return res.status(200).json(posts);
   } catch (error) {
     if (
       axios.isAxiosError(error) &&
@@ -28,7 +30,7 @@ export const GET_ONE = async (req: Request, res: Response) => {
     ) {
       return res.status(404).json({ message: 'User not found' });
     } else {
-      return res.status(500).json({ message: 'Error fetching user' });
+      return res.status(500).json({ message: 'Error fetching user posts' });
     }
   }
 };
