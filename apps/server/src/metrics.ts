@@ -9,6 +9,7 @@ export const httpRequestDurationMicroseconds = new client.Histogram({
   name: 'http_request_duration_ms',
   help: 'Duration of HTTP requests in ms',
   labelNames: ['method', 'route', 'status_code'],
+  buckets: [0.1, 5],
 });
 
 export const metricsMiddleware = (req: any, res: any, next: any) => {
