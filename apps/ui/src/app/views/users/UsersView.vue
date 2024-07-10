@@ -19,8 +19,8 @@ const fetchUsers = () => {
 const filteredUsers = computed<IUser[]>(() => {
     if (!searchQuery) return users.value;
     const query = searchQuery.value.toLowerCase();
-    return users.value.filter(user => user.email.toLowerCase().includes(query) || user.name.toLowerCase().includes(query)
-        || user.username.toLowerCase().includes(query));
+    return users.value.filter(user => user.email.toLowerCase().includes(query.toLowerCase()) || user.name.toLowerCase().includes(query.toLowerCase())
+        || user.username.toLowerCase().includes(query.toLowerCase()));
 });
 
 onMounted(() => {

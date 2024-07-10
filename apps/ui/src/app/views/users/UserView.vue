@@ -6,15 +6,17 @@ import { IPost, IUser } from '@node-vue-prom/shared-types';
 
 const store = useStore();
 const route = useRoute();
-const user = computed<IUser | null>(() => store.state.users.user);
-const userPosts = computed<IPost[]>(() => store.state.users.userPosts);
-const isLoading = computed<boolean>(() => store.state.users.loading);
+
+const { users } = store.state;
+
+const user = computed<IUser | null>(() => users.user);
+const userPosts = computed<IPost[]>(() => users.userPosts);
+const isLoading = computed<boolean>(() => users.loading);
 
 const fetchUser = () => {
     const userId = route.params.id as string;
     store.dispatch('users/fetchUser', userId);
     store.dispatch('users/fetchUserPosts', userId);
-    console.log(userPosts.value.length);
 }
 
 onMounted(() => {
@@ -46,7 +48,7 @@ onMounted(() => {
                                 <v-icon name="md-email" scale="1" />
                                 <a :href="'mailto:' + user?.email" class="text-sm font-semibold text-blue-400">{{
                                     user?.email
-                                    }}</a>
+                                }}</a>
                             </div>
                             <div class="flex gap-x-2 items-center">
                                 <v-icon name="co-building" scale="1" />
@@ -68,11 +70,11 @@ onMounted(() => {
             </div>
             <!--user posts-->
             <div class="flex flex-col gap-y-4 mt-8">
-                <h2 class="text-center text-2xl font-bold">{{ user.name }}'s posts</h2>
+                <h2 class="text-center text-2xl font-bold">{{ user?.name }}'s posts</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" v-if="userPosts.length > 0">
                     <post-card v-for="post in userPosts" :post="post" />
                 </div>
-                <h1 v-else class="text-center text-red-600 font-bold">{{ user.name }} has no posts yet</h1>
+                <h1 v-else class="text-center text-red-600 font-bold">{{ user?.name }} has no posts yet</h1>
             </div>
         </div>
     </div>
