@@ -8,11 +8,35 @@ defineProps<{
 
 <template>
     <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md">
-        <a href="#">
-            <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">{{ user.name }} - {{
-                user.username }}</h5>
-        </a>
-        <!-- <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology
-            acquisitions of 2021 so far, in reverse chronological order.</p> -->
+        <div class="flex items-center gap-x-2">
+            <v-icon name="fa-user-circle" scale="2" />
+            <div>
+                <h5 class="text-md font-bold tracking-tight text-gray-900">{{ user.name }}</h5>
+                <p>{{ user.username }}</p>
+            </div>
+        </div>
+        <div class="flex flex-col my-4 gap-2">
+            <div class="flex gap-x-2 items-center">
+                <v-icon name="md-email" scale="1" />
+                <a :href="'mailto:' + user.email" class="text-sm font-semibold text-blue-400">{{ user.email }}</a>
+            </div>
+            <div class="flex gap-x-2 items-center">
+                <v-icon name="co-building" scale="1" />
+                <span class="text-xs font-semibold">{{ user.company.name }}</span>
+            </div>
+            <div class="flex gap-x-2 items-center">
+                <v-icon name="co-location-pin" scale="1" />
+                <span class="text-xs font-semibold">{{ user.address.city }} - {{ user.address.street }}</span>
+            </div>
+        </div>
+        <div class="flex justify-around">
+            <router-link :to="`/users/${user.id}`"
+                class="bg-blue-500 hover:bg-blue-700 px-4 py-1 rounded-md text-white">More
+                details</router-link>
+            <router-link :to="`/users/${user.id}`"
+                class="bg-blue-500 hover:bg-blue-700 px-4 py-1 rounded-md text-white">View user
+                posts</router-link>
+
+        </div>
     </div>
 </template>
