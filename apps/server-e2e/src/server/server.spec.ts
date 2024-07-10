@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { IUser, IPost } from '@node-vue-prom/shared-types';
 
-describe('TEST APIS', () => {
+describe('users', () => {
   it('should return a message', async () => {
     const res = await axios.get(`/`);
 
@@ -49,7 +49,9 @@ describe('TEST APIS', () => {
       expect(post.userId).toBe(userId);
     });
   });
+});
 
+describe('posts', () => {
   it('should return posts list', async () => {
     const res = await axios.get(`/posts`);
     const posts = res.data as IPost[];
