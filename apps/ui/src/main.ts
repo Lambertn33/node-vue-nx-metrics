@@ -12,16 +12,19 @@ import TheHeader from './app/components/TheHeader.vue';
 
 import UserCard from './app/components/UserCard.vue';
 
+import PostCard from './app/components/PostCard.vue';
+
 import { OhVueIcon, addIcons } from 'oh-vue-icons';
 
 import {
   CoBuilding,
   CoLocationPin,
+  CoWhatsapp,
   FaUserCircle,
   MdEmail,
 } from 'oh-vue-icons/icons';
 
-addIcons(FaUserCircle, MdEmail, CoBuilding, CoLocationPin);
+addIcons(FaUserCircle, CoWhatsapp, MdEmail, CoBuilding, CoLocationPin);
 
 const app = createApp(App);
 
@@ -31,4 +34,5 @@ app
   .component('v-icon', OhVueIcon)
   .component('the-header', TheHeader)
   .component('user-card', UserCard)
+  .component('post-card', PostCard)
   .mount('#root');

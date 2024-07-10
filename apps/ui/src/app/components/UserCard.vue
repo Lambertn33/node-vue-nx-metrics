@@ -29,14 +29,10 @@ defineProps<{
                 <span class="text-xs font-semibold">{{ user.address.city }} - {{ user.address.street }}</span>
             </div>
         </div>
-        <div class="flex justify-around">
+        <div class="flex">
             <router-link :to="`/users/${user.id}`"
-                class="bg-blue-500 hover:bg-blue-700 px-4 py-1 rounded-md text-white">More
+                class="bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded-md text-white w-full flex justify-center font-bold">More
                 details</router-link>
-            <router-link :to="`/users/${user.id}`"
-                class="bg-blue-500 hover:bg-blue-700 px-4 py-1 rounded-md text-white">View user
-                posts</router-link>
-
         </div>
     </div>
 </template>
