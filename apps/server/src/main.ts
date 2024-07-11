@@ -15,8 +15,6 @@ import {
   GET_ONE as POSTS_GET_ONE,
 } from './controllers/posts.controller';
 
-import postsRoutes from './routes/posts.route';
-
 const app = express();
 
 app.use(metricsMiddleware);

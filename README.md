@@ -14,3 +14,8 @@ the server runs on http://localhost:3000
 the ui runs on http://localhost:4200
 
 to check the metrics: http://localhost:3000/metrics
+
+# Test
+
+to test the server: npx nx e2e server-e2e
+to test the UI: npx nx e2e ui-e2e
