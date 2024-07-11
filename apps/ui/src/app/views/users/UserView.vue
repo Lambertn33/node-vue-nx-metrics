@@ -48,7 +48,7 @@ onMounted(() => {
                                 <v-icon name="md-email" scale="1" />
                                 <a :href="'mailto:' + user?.email" class="text-sm font-semibold text-blue-400">{{
                                     user?.email
-                                }}</a>
+                                    }}</a>
                             </div>
                             <div class="flex gap-x-2 items-center">
                                 <v-icon name="co-building" scale="1" />

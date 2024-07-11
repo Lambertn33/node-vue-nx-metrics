@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-    <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md">
+    <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md" data-cy="user-card">
         <div class="flex items-center gap-x-2">
             <v-icon name="fa-user-circle" scale="2" />
             <div>
